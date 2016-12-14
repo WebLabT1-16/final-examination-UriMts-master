@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8" />
+        <title>La Pobla Stations</title>
+
+        <script type="text/javascript" src="/js/addInput.js"></script>
+    </head>
+    <body>
+
+    <h1><img src="/layout_set_logo.png"/> LLeida - La Pobla Stations</h1>
+    <h2><div th:text="${username}">Username</div> </h2>
+
+    <form method="post">
+        <!--TODO 5 Thymeleaf attributes: fill in the name of the select (origin) so that it corresponds to the name of the
+        origin station of the journey
+        Note that:
+            + Use as an example the name of the destination select (see the code below)
+        POSTCONDITION: once TODOO 4 and TODOO 5 are completed calling to localhost http://localhost:8080/users/messi/add/favoriteJourney should work
+        and add new favorite journeys to the user messi (don't need to check though)
+        -->
+        Origin: <select name="">
+                    <option th:each="station : ${stationList}" th:value="${station.nom}" th:text="${station.nom}">Station name</option>
+                </select>
+        Destination: <select name="journey.destination.nom">
+                        <option th:each="station : ${stationList}" th:value="${station.nom}" th:text="${station.nom}">Station name</option>
+                    </select>
+        <!--TODO 5.1 (you don't really need to do anything, just read) Note that the options of the select are automatically generated from the station list-->
+        <br/>
+        <br/>
+        <br/>
+        Week's day and time:
+        <br/>
+        <div id="dateTime">
+            Day: <select th:name="${journey.origin.nom}">
+                    <option value="Sunday">Sunday</option>
+                    <option value="Monday">Monday</option>
+                    <option value="Tuesday">Tuesday</option>
+                    <option value="Wednesday">Wednesday</option>
+                    <option value="Thursday">Thursday</option>
+                    <option value="Friday">Friday</option>
+                    <option value="Saturday">Saturday</option>
+                </select>
+            Time (hh:mm): <input type="text" name="startList[0].begin" />
+        </div>
+        <input type="button" value="Add another text input" onClick="addInput('dateTime');" />
+
+        <br/><br/>
+        <input type="submit" value="New Favorite Journey" />
+    </form>
+
+    </body>
+</html>
